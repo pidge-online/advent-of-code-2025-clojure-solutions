@@ -16,5 +16,7 @@ pom.xml.asc
 .lsp
 /doc
 /test
+/.calva
+/.joyride
 
 
