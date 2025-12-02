@@ -37,8 +37,8 @@
                   (str/split input #"\n")
                   (map Integer/parseInt input)))
 
-;; p1 solution
+;; p1 solution (stack overflow errors when not using lein as REPL)
 (tick-up input-prep end-tick-increment)
 
-;; p2 solution
+;; p2 solution (stack overflow errors when not using lein as REPL)
 (tick-up input-prep any-tick-increment)
