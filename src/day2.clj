@@ -1,13 +1,10 @@
 (ns day2)
 (require '[clojure.string :as str])
 
-(defn repeating-subsequence-compsed-string? [part]
-  (let [regex (if (= part "p1")
-                #"^(.+)\1$"
-                #"^(.+)\1+$")]
-    (fn [x] (let [str-x (str x)]
+(defn repeating-subsequence-compsed-string? [regex]
+  (fn [x] (let [str-x (str x)]
               (= str-x
-                 (first (re-find regex str-x)))))))
+                 (first (re-find (re-pattern regex) str-x))))))
 
 (defn calculate-total [input f]
   (->> input
@@ -23,7 +20,7 @@
                   (map (fn [[a b]] (range a (inc b))) input)))
 
 ;; p1 solution
-(calculate-total input-prep (repeating-subsequence-compsed-string? "p1"))
+(calculate-total input-prep (repeating-subsequence-compsed-string? "^(.+)\\1$"))
 
 ;; p2 solution
-(calculate-total input-prep (repeating-subsequence-compsed-string? "p2"))
+(calculate-total input-prep (repeating-subsequence-compsed-string? "^(.+)\\1+$"))
