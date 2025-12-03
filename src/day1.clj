@@ -29,7 +29,7 @@
                      (= f any-tick-increment) (any-tick-increment count rotation acc))]
      (if (empty? (rest input))
        new-count
-       (tick-up (rest input) f res new-count)))))
+       (recur (rest input) f res new-count)))))
 
 (def input-prep (as-> "resources/puzzle-inputs/day1.txt" input
                   (slurp input)
@@ -37,8 +37,9 @@
                   (str/split input #"\n")
                   (map Integer/parseInt input)))
 
-;; p1 solution (stack overflow errors when not using lein as REPL)
+;; p1 solution 
 (tick-up input-prep end-tick-increment)
 
-;; p2 solution (stack overflow errors when not using lein as REPL)
+;; p2 solution 
 (tick-up input-prep any-tick-increment)
+
