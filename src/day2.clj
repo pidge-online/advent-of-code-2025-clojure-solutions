@@ -22,8 +22,6 @@
                   (map #(mapv (fn [x] (Long/parseLong x)) %) input)
                   (map (fn [[a b]] (range a (inc b))) input)))
 
-(input-prep)
-
 ;; p1 solution
 (calculate-total input-prep (repeating-subsequence-compsed-string? "p1"))
 
