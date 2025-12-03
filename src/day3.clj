@@ -12,14 +12,15 @@
   (map (fn [x] (let [sorted-batteries (reverse (sort x))
                      largest-joltage (first sorted-batteries)]
                  (if (apply distinct? (take 2 sorted-batteries))
-                   (let [substring-to-validate (str/split (str/join "" x) (re-pattern largest-joltage))] 
+                   (let [substring-to-validate (str/split (str/join "" x) (re-pattern largest-joltage))
+                         other-digit                      (first (reverse (sort (last substring-to-validate))))] 
                      (if (= (count substring-to-validate) 1) 
                        (Integer/parseInt (str
-                                          (first (reverse (sort (last substring-to-validate))))
+                                          other-digit
                                           largest-joltage))
                        (Integer/parseInt (str
                                           largest-joltage
-                                          (first (reverse (sort (last substring-to-validate)))))))) 
+                                          other-digit)))) 
                      (* 11 (Integer/parseInt largest-joltage)))))
        input)
   (apply + input))
