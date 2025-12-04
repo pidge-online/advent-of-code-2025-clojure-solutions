@@ -1,6 +1,16 @@
 (ns day04)
 (require '[clojure.string :as str])
 
+;; data loading and prep
+(def input-data (as-> "resources/puzzle-inputs/day04.txt" input
+                  (slurp input)
+                  (str/split input #"\n")
+                  (mapv #(str/replace % #".|@" {"." "0" "@" "1"}) input)
+                  (mapv #(str/split % #"") input)
+                  (mapv #(mapv (fn [i] (Integer/parseInt i)) %) input))) 
+
+(def rows-of-rolls (count input-data)) ; needed to iter across
+
 (defn roll-existence-co-ord-check [[y x] n grid] ; rotating round from north clockwise to check adjacent rolls
   (let [found-value (case n
                       0 (get-in grid [(dec y) x])
@@ -15,7 +25,7 @@
       found-value
       0)))
 
-(defn reachable-toilet-roll? [y x grid] 
+(defn accessible-toilet-roll? [y x grid] 
   (loop [adjactent-reachable-total 0
          items-checked 0]
     (if (or
@@ -28,44 +38,35 @@
             new-items-checked (inc items-checked)]
         (recur new-adjactent-reachable-total new-items-checked)))))
 
-(defn produce-accessible-toilet-roll-grid [grid]
-  (vec (for [y (range 0 140)]
-         (vec (for [x (range 0 140)]
+(defn accessible-roll-state [grid]
+  (vec (for [y (range 0 rows-of-rolls)]
+         (vec (for [x (range 0 rows-of-rolls)]
                 (if (and
                      (pos? (get-in grid [y x]))
-                     (reachable-toilet-roll? y x grid)) 1 0)))))) 
+                     (accessible-toilet-roll? y x grid)) 1 0)))))) 
 
-(defn update-role-state [input-state new-state]
-  (vec (for [y (range 0 140)]
-         (vec (for [x (range 0 140)]
+(defn update-roll-state [input-state new-state]
+  (vec (for [y (range 0 rows-of-rolls)]
+         (vec (for [x (range 0 rows-of-rolls)]
                 (- (get-in input-state [y x]) (get-in new-state [y x])))))))
 
 (defn count-total-accessible-rolls [grid]
   (reduce + (flatten grid)))
 
-
 (defn calculate-final-role-state
   ([input] (calculate-final-role-state input (count-total-accessible-rolls input) 0))
   ([input count acc]
-   (let [accessible-roll-state (produce-accessible-toilet-roll-grid input)
+   (let [accessible-roll-state (accessible-roll-state input)
          accessible-count      (count-total-accessible-rolls accessible-roll-state)
-         next-role-state       (update-role-state input accessible-roll-state)
+         next-role-state       (update-roll-state input accessible-roll-state)
          new-count             (count-total-accessible-rolls next-role-state)]
      (if (= count new-count)
        next-role-state
        (recur next-role-state new-count (+ acc accessible-count))))))
 
-;; data loading and prep
-(def input-data (as-> "resources/puzzle-inputs/day04.txt" input
-                  (slurp input)
-                  (str/split input #"\n")
-                  (mapv #(str/replace % #".|@" {"." "0" "@" "1"}) input)
-                  (mapv #(str/split % #"") input)
-                  (mapv #(mapv (fn [i] (Integer/parseInt i)) %) input))) 
-
 ;; p1 solution
 (-> input-data
-    (produce-accessible-toilet-roll-grid)
+    (accessible-roll-state)
     (count-total-accessible-rolls))
 
 ;; p2 solution
