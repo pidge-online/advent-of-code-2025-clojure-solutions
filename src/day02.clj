@@ -1,4 +1,4 @@
-(ns day2)
+(ns day02)
 (require '[clojure.string :as str])
 
 (defn repeating-subsequence-compsed-string? [regex]
@@ -12,7 +12,7 @@
        (map #(apply + %))
        (reduce +)))
 
-(def input-prep (as-> "resources/puzzle-inputs/day2.txt" input
+(def input-prep (as-> "resources/puzzle-inputs/day02.txt" input
                   (slurp input)
                   (str/split input #",")
                   (map #(str/split % #"-") input)

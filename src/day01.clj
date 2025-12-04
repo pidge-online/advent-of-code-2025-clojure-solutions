@@ -1,4 +1,4 @@
-(ns day1)
+(ns day01)
 (require '[clojure.string :as str])
 
 (defn end-tick-increment [count value]
@@ -31,7 +31,7 @@
        new-count
        (recur (rest input) f res new-count)))))
 
-(def input-prep (as-> "resources/puzzle-inputs/day1.txt" input
+(def input-prep (as-> "resources/puzzle-inputs/day01.txt" input
                   (slurp input)
                   (str/replace input #"L|R" {"L" "-" "R" ""})
                   (str/split input #"\n")

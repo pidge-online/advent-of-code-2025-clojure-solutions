@@ -1,7 +1,7 @@
-(ns day3)
+(ns day03)
 (require '[clojure.string :as str])
 
-(def input-prep (as-> "resources/puzzle-inputs/day3.txt" input
+(def input-prep (as-> "resources/puzzle-inputs/day03.txt" input
                    (slurp input)
                    (str/split input #"\n")
                    (map #(str/split % #"") input)))
