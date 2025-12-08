@@ -30,4 +30,3 @@
 
 ;; p1 solution 
 (ids-in-ranges input-ids input-ranges)
-
