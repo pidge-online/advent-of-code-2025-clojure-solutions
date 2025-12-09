@@ -117,13 +117,6 @@
 ;; current too large value co-ords [95990 63461] [4061 37808]
 ;; ([[3836 64177] true false])
 ;; ([[96087 37113] false true])
-;; not accounted for internal pathing where chunks are removed from inside the shape
+;; not accounted for concave nature of polygon
+;; need to find maximum spanning rectangle area inside concave polygon algorithm
 
-(produce-in-bounds-status-list-per-co-ord input-data [95990 63461] [4061 37808])
-
-
-(filter #(= (subvec % 1 3) [false true]) (produce-in-bounds-status-list-per-co-ord input-data [95990 63461] [4061 37808]))
-
-;; maximum spanning rectangle area inside concave polygon
-
-input-data
