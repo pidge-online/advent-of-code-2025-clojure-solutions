@@ -1,4 +1,4 @@
-(ns advent-of-code-2025.day10
+(ns day10
   (:require
    [clojure.core.reducers :as r]
    [clojure.math.combinatorics :as combo]
