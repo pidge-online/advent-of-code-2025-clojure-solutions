@@ -4,4 +4,22 @@ Solutions day by day for this (2025) year's Advent of Code
 
 Puzzle inputs were stored in `resources/puzzle-inputs/`, adjust the code as required to test yours
 
-All solutions produced with Leiningen as the REPL; noted as when replicated using babashka even with custom stack sizes, Day 1 solutions stack overflow error so currently trying to figure it out
+## day-by-day progress
+
+| day | part 1 | part 2 |
+| :------------ | :-----------: | :------------: |
+| 01 | ✓ | ✓ |
+| 02 | ✓ | ✓ |
+| 03 | ✓ | ✗ |
+| 04 | ✓ | ✓ |
+| 05 | ✓ | ✗ |
+| 06 | ✓ | ✗ |
+| 07 | ✓ | ✓ |
+| 08 | ✗ | ✗ |
+| 09 | ✓ | ✓ |
+| 10 | ✓ | ✗ |
+| 11 | ✓ | ✗ |
+| 12 | ✓ | ?* | 
+| total | 11/12 | 5/12 | 
+
+(* yet to unlock)
