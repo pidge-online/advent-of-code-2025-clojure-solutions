@@ -1,5 +1,6 @@
 (ns day07
-  (:require [clojure.string :as str]))
+  (:require 
+   [clojure.string :as str]))
 
 (def input-data (->> "resources/puzzle-inputs/day07.txt"
                      (slurp)
