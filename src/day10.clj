@@ -1,9 +1,9 @@
 (ns advent-of-code-2025.day10
   (:require
-   [clojure.walk :as walk]
-   [clojure.string :as str]
+   [clojure.core.reducers :as r]
    [clojure.math.combinatorics :as combo]
-   [clojure.core.reducers :as r]))
+   [clojure.string :as str]
+   [clojure.walk :as w]))
 
 (defn binary-vector-addition [v u]
   (mapv #(if (= %1 %2)
@@ -29,7 +29,7 @@
        (mapv #(str/replace % #"\(|\)" {"(" "" ")" ""}))
        (mapv #(str/split % #" "))
        (mapv #(mapv (fn [s] (str/split s #",")) %))
-       (walk/postwalk #(if (string? %) (Integer/parseInt %) %))))
+       (w/postwalk #(if (string? %) (Integer/parseInt %) %))))
 
 (def binary-button-wirings
   (let [zero-base-to-size (mapv #(vec (repeat % 0)) (mapv #(count %) input-indicator-light-diagrams))]
