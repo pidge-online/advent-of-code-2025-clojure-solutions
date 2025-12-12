@@ -1,5 +1,5 @@
-(ns day06)
-(require '[clojure.string :as str])
+(ns day06
+  (:require [clojure.string :as str]))
 
 (defn transpose [data]
   (apply (partial mapv vector) data))
