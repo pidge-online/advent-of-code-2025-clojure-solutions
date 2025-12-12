@@ -1,5 +1,5 @@
-(ns day05)
-(require '[clojure.string :as str])
+(ns day05
+  (:require [clojure.string :as str]))
 
 (def input-ranges (as-> "resources/puzzle-inputs/day05-ranges.txt" input
                     (slurp input)
