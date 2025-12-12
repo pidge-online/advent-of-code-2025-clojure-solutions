@@ -1,5 +1,5 @@
-(ns day02)
-(require '[clojure.string :as str])
+(ns day02
+  (:require [clojure.string :as str]))
 
 (defn repeating-subsequence-compsed-string? [regex]
   (fn [x] (let [str-x (str x)]
