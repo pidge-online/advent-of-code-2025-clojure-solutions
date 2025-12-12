@@ -1,5 +1,5 @@
-(ns day04)
-(require '[clojure.string :as str])
+(ns day04
+  (:require [clojure.string :as str]))
 
 ;; data loading and prep
 (def input-data (as-> "resources/puzzle-inputs/day04.txt" input
