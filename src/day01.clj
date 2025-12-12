@@ -1,5 +1,5 @@
-(ns day01)
-(require '[clojure.string :as str])
+(ns day01
+  (:require [clojure.string :as str]))
 
 (defn end-tick-increment [count value]
   (if (zero? value)
