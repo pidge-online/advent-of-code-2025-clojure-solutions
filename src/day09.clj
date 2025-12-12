@@ -1,5 +1,6 @@
 (ns day09
-  (:require '[clojure.string :as str]))
+  (:require 
+   [clojure.string :as str]))
 
 (defn calculate-area [[x y] [x' y']]
   (abs (*
