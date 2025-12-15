@@ -65,11 +65,15 @@
        next-role-state
        (recur next-role-state new-count (+ acc accessible-count))))))
 
-;; p1 solution
-(-> input-data
-    (accessible-roll-state)
-    (count-total-accessible-rolls))
+(def part1 (-> input-data
+               (accessible-roll-state)
+               (count-total-accessible-rolls)))
 
-;; p2 solution
-(- (count-total-accessible-rolls input-data) 
-   (count-total-accessible-rolls (calculate-final-role-state input-data)))
+(def part2 (- (count-total-accessible-rolls input-data)
+              (count-total-accessible-rolls (calculate-final-role-state input-data))))
+
+(defn -main []
+  (println part1)
+  (println part2))
+
+(-main)
