@@ -29,8 +29,15 @@
             all-values-out-new? (= (set new-values) #{1})]
         (recur new-values all-values-out-new?)))))
 
-;; p1 solution
-(as-> input-data input
-  (apply (partial mapv vector) input)
-  (zipmap (get-in input [0]) (get-in input [1])) ; get hashmap of values to keys
-  (extract-values-from-start input ["you"]))
+(def part1 (as-> input-data input
+             (apply (partial mapv vector) input)
+             (zipmap (get-in input [0]) (get-in input [1])) ; get hashmap of values to keys
+             (extract-values-from-start input ["you"])))
+
+(def part2 "part 2 TBD")
+
+(defn -main []
+  (println part1)
+  (println part2))
+
+(-main)
