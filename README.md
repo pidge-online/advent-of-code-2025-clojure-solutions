@@ -10,9 +10,9 @@ Puzzle inputs were stored in `resources/puzzle-inputs/`, adjust the code as requ
 | :------------ | :-----------: | :------------: | :------------: | :------------: |
 | 01 | ✓ | ✓ | N/A | N/A |
 | 02 | ✓ | ✓ | N/A | N/A |
-| 03 | ✓ | ✓ | N/A | TBD |
+| 03 | ✓ | ✓ | N/A | N/A |
 | 04 | ✓ | ✓ | N/A | N/A |
-| 05 | ✓ | ✓ | N/A | TBD |
+| 05 | ✓ | ✓ | N/A | N/A |
 | 06 | ✓ | ✗ | N/A | TBD |
 | 07 | ✓ | ✓ | N/A | N/A |
 | 08 | ✓ | ✓ | Algorithm known, needed help constructing it due to lack of experience | Algorithm known, needed help constructing it due to lack of experience |
