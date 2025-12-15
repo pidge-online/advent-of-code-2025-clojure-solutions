@@ -26,8 +26,10 @@
              (map two-battery-joltage input)
              (apply + input)))
 
+(def part2 "part 2 TBD")
+
 (defn -main []
   (println part1)
-  (println "part 2 TBD"))
+  (println part2))
 
 (-main)
