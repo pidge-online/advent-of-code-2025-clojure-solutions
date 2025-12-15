@@ -31,8 +31,15 @@
 (def total-tile-comsumptions-per-shape
    (mapv #(reduce + (flatten %)) shapes))
 
-; p1 solution
-(reduce + (for [x (range 0 1000)]
-         (if (>= (apply * (get grids x)) (reduce + (mapv * (get arrangements x) total-tile-comsumptions-per-shape)))
-           1
-           0))) ; produces answer, doesn't consider edge cases but works
+(def part1 (reduce + (for [x (range 0 1000)]
+                       (if (>= (apply * (get grids x)) (reduce + (mapv * (get arrangements x) total-tile-comsumptions-per-shape)))
+                         1
+                         0)))) ; produces answer, doesn't consider edge I believe cases but works
+ 
+(def part2 "part 2 TBD after outstanding part 2s are completed")
+
+(defn -main []
+  (println part1)
+  (println part2))
+
+(-main)
