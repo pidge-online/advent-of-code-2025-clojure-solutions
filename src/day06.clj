@@ -19,8 +19,15 @@
                   (mapv #(str/split % #"\s+") input)
                   (transpose input))) ; transpose nested vectors
 
-;; p1 solution
-(->> input-data
-     (mapv #(strings-to-ints-and-symbol %))
-     (mapv #(perfom-math %))
-     (reduce +))
+(def part1 (->> input-data
+                (mapv #(strings-to-ints-and-symbol %))
+                (mapv #(perfom-math %))
+                (reduce +)))
+
+(def part2 "part 2 TBD")
+
+(defn -main []
+  (println part1)
+  (println part2))
+
+(-main)
