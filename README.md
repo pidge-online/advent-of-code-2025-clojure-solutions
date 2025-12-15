@@ -7,7 +7,7 @@ Puzzle inputs were stored in `resources/puzzle-inputs/`, adjust the code as requ
 ## day-by-day progress
 
 | day | part 1 | part 2 | p1 assistance? | p2 assistance? |
-| :------------ | :-----------: | :------------: |
+| :------------ | :-----------: | :------------: | :------------: | :------------: |
 | 01 | ✓ | ✓ | N/A | N/A |
 | 02 | ✓ | ✓ | N/A | N/A |
 | 03 | ✓ | ✗ | N/A | TBD |
