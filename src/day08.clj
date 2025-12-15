@@ -9,63 +9,76 @@
                   (mapv #(vec (str/split % #",")) input)
                   (mapv #(mapv (fn [x] (Integer/parseInt x)) %) input)))
 
-input-data
+(defn sq [x] (math/pow x 2))
 
-(defn calculate-distance [[x y z] [x' y' z']]
-  (math/pow
-   (+ (math/pow (- x x') 2) (math/pow (- y y') 2) (math/pow (- z z') 2))
-   0.5))
+(defn squared-dist [[x1 y1 z1] [x2 y2 z2]]
+  (+ (sq (- x1 x2))
+     (sq (- y1 y2))
+     (sq (- z1 z2))))
 
-(defn take-three-largest-circuits [circuit-set]
-  (vec (take 3 (reverse (sort-by count circuit-set)))))
+(defn all-pairs [xs]
+  (let [v (vec xs)
+        n (count v)]
+    (for [i (range n)
+          j (range (inc i) n)]
+      [(v i) (v j)])))
 
-(defn multiplied-size-of-largest-circuits [[c1 c2 c3]]
-  (* (count c1) (count c2) (count c3)))
+(defn sorted-pairs [xs] (->> xs
+                             (all-pairs)
+                             (sort-by #(apply squared-dist %))))
 
-;; compare vs rest of list
+(defn uf-init [xs]
+  (zipmap xs xs))
 
-;; socket in vec once complete
+(defn uf-find [uf x]
+  (if (= (uf x) x)
+    x
+    (recur uf (uf x))))
 
-;; find neighbour in vec once done
+(defn uf-union [uf a b]
+  (let [ra (uf-find uf a)
+        rb (uf-find uf b)]
+    (if (= ra rb)
+      uf
+      (assoc uf ra rb))))
 
-(defn compare-junction-box-distances [input-boxes junction-box-to-compare box-number]
-  (loop [remaining-boxes           (vec (concat (subvec input-boxes 0 box-number) (subvec input-boxes (inc box-number) 1000))); (vec (concat (subvec input-boxes 0 box-number) (subvec input-boxes (inc box-number) 1000)))
-         current-closest-box       [0 0 0]
-         current-shortest-distance 1000000000]
-    (if (empty? remaining-boxes)
-      (vec (sort [junction-box-to-compare current-closest-box]))
-      (let [new-box (first remaining-boxes)
-            new-distance (calculate-distance junction-box-to-compare new-box)]
-        (if (< new-distance current-shortest-distance)
-          (recur (rest remaining-boxes) new-box new-distance)
-          (recur (rest remaining-boxes) current-closest-box current-shortest-distance))))))
+(defn uf-cluster-map [uf]
+  (->> (keys uf)
+       (group-by #(uf-find uf %))))
 
-(defn append-junction-box-to-coupling [current-couplings box]
-  (update current-couplings (count current-couplings) (fn [_] box)))
+(defn part1 [input-data]
+  (let [input input-data
+        pairs (sorted-pairs input)
+        uf0   (uf-init input)]
+    (->> pairs
+         (reductions (fn [uf [a b]]
+                       (uf-union uf a b))
+                     uf0)
+         (map (fn [uf]
+                (->> (uf-cluster-map uf)
+                     vals
+                     (map count)
+                     (sort >)
+                     (take 3)
+                     (apply *))))
+         (take 1000)
+         last)))
 
-(defn update-extant-box-couplings [current-couplings [a b]]
-  (mapv #(cond
-           (and (some #{a} %) (some #{b} %)) %
-           (some #{a} %)                     (append-junction-box-to-coupling % b)
-           (some #{b} %)                     (append-junction-box-to-coupling % a)
-           :else %)                          current-couplings))
+(defn part2 [input-data]
+  (let [input input-data
+        pairs (sorted-pairs input)
+        uf0   (uf-init input)
+        index (->> pairs
+                   (reductions (fn [uf [a b]]
+                                 (uf-union uf a b))
+                               uf0)
+                   (take-while #(> (count (uf-cluster-map %)) 1))
+                   count)
+        [[x1 _ _] [x2 _ _]] (nth pairs (dec index))]
+    (* x1 x2)))
 
-(defn update-or-append-new-coupling [current-couplings [a b]]
-  (let [single-flattened-couplings (apply concat current-couplings)]
-    (if (or (not (nil? (some #{a} single-flattened-couplings)))
-            (not (nil? (some #{b} single-flattened-couplings))))
-      (update-extant-box-couplings current-couplings [a b])
-      (append-junction-box-to-coupling current-couplings [a b]))))
+(defn -main []
+  (println (part1 input-data))
+  (println (part2 input-data)))
 
-(defn iterate-boxes [box-amount]
-  (if (< box-amount 0)
-    []
-    (update-or-append-new-coupling (iterate-boxes (dec box-amount)) (compare-junction-box-distances input-data (nth input-data box-amount) box-amount))))
-
-(take-three-largest-circuits (iterate-boxes 999))
-
-(multiplied-size-of-largest-circuits (take-three-largest-circuits (iterate-boxes 999)))
-
-(count (first (take-three-largest-circuits (iterate-boxes 999))))
-
-(iterate-boxes 999)
+(-main)
