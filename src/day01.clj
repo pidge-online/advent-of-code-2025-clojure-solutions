@@ -39,7 +39,7 @@
                   (map Integer/parseInt input)))
 
 (defn -main []
-  (println (part1 (tick-up input-prep end-tick-increment)))
-  (println (part2 (tick-up input-prep any-tick-increment))))
+  (println (tick-up input-prep end-tick-increment))
+  (println (tick-up input-prep any-tick-increment)))
 
 (-main)
