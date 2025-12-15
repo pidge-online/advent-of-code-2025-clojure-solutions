@@ -20,6 +20,6 @@ Puzzle inputs were stored in `resources/puzzle-inputs/`, adjust the code as requ
 | 10 | ✓ | ✗ | N/A | TBD |
 | 11 | ✓ | ✗ | N/A | TBD |
 | 12 | ✓ | ✗* | N/A | TBD | 
-| total | 12/12 | 6/12 | 1/12 | 1/6 | 
+| total | 12/12 | 8/12 | 1/12 | 1/8 | 
 
 (* yet to unlock)
