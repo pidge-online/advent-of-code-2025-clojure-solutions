@@ -29,5 +29,12 @@
                (recur (rest ids) input-ranges (+ acc 1))
                (recur ids (rest ranges) acc))))))
 
-;; p1 solution 
-(ids-in-ranges input-ids input-ranges)
+(def part1 (ids-in-ranges input-ids input-ranges))
+
+(def part2 "part 2 TBD")
+
+(defn -main []
+  (println part1)
+  (println part2))
+
+(-main)
