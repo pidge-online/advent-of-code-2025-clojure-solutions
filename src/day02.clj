@@ -20,8 +20,8 @@
                   (map #(mapv (fn [x] (Long/parseLong x)) %) input)
                   (map (fn [[a b]] (range a (inc b))) input)))
 
-;; p1 solution
-(calculate-total input-prep (repeating-subsequence-compsed-string? "^(.+)\\1$"))
+(defn -main []
+  (println (calculate-total input-prep (repeating-subsequence-compsed-string? "^(.+)\\1$")))
+  (println (calculate-total input-prep (repeating-subsequence-compsed-string? "^(.+)\\1+$"))))
 
-;; p2 solution
-(calculate-total input-prep (repeating-subsequence-compsed-string? "^(.+)\\1+$"))
+(-main)
