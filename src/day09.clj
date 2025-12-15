@@ -108,11 +108,21 @@
                   (mapv #(vec (str/split % #",")))
                   (mapv #(mapv (fn [x] (Integer/parseInt x)) %))))
 
-; p1 solution
-(iterate-through-tiles input-data)
+(def part1 (iterate-through-tiles input-data))
 
-; p2 solution
-(def tile-pathing-steps (vec (map vec (partition 2 1 input-data))))
-(iterate-through-tiles input-data tile-pathing-steps)
+(def part2 (->> input-data
+                (partition 2 1)
+                (map vec)
+                (vec)
+                (iterate-through-tiles input-data)))
 
+(defn -main []
+  (println part1)
+  (println part2))
+
+(-main)
+
+
+
+ 
 
