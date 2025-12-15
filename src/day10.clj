@@ -47,10 +47,17 @@
        (mapv #(str/split % #","))
        (mapv #(mapv (fn [char] (Integer/parseInt char)) %))))
 
-; p1 solution
-(r/fold + (fn [cnt sub-coll]
-            (+ cnt (count sub-coll))) (for [length (range 0 (count input-data))]
-                                        (some
-                                         #(when (= (nth input-indicator-light-diagrams length)
-                                                   (reduce binary-vector-addition %)) %)
-                                         (rest (combo/subsets (nth binary-button-wirings length))))))
+(def part1 (r/fold + (fn [cnt sub-coll]
+                       (+ cnt (count sub-coll))) (for [length (range 0 (count input-data))]
+                                                   (some
+                                                    #(when (= (nth input-indicator-light-diagrams length)
+                                                              (reduce binary-vector-addition %)) %)
+                                                    (rest (combo/subsets (nth binary-button-wirings length)))))))
+
+(def part2 "part 2 TBD")
+
+(defn -main []
+  (println part1)
+  (println part2))
+
+(-main)
