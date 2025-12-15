@@ -10,7 +10,7 @@ Puzzle inputs were stored in `resources/puzzle-inputs/`, adjust the code as requ
 | :------------ | :-----------: | :------------: | :------------: | :------------: |
 | 01 | ✓ | ✓ | N/A | N/A |
 | 02 | ✓ | ✓ | N/A | N/A |
-| 03 | ✓ | ✗ | N/A | TBD |
+| 03 | ✓ | ✓ | N/A | TBD |
 | 04 | ✓ | ✓ | N/A | N/A |
 | 05 | ✓ | ✗ | N/A | TBD |
 | 06 | ✓ | ✗ | N/A | TBD |
