@@ -46,7 +46,7 @@
   (->> (keys uf)
        (group-by #(uf-find uf %))))
 
-(defn part1 [input-data]
+(def part1 
   (let [input input-data
         pairs (sorted-pairs input)
         uf0   (uf-init input)]
@@ -64,7 +64,7 @@
          (take 1000)
          last)))
 
-(defn part2 [input-data]
+(def part2 
   (let [input input-data
         pairs (sorted-pairs input)
         uf0   (uf-init input)
@@ -78,7 +78,7 @@
     (* x1 x2)))
 
 (defn -main []
-  (println (part1 input-data))
-  (println (part2 input-data)))
+  (println part1)
+  (println part2))
 
 (-main)
