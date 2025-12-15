@@ -33,6 +33,9 @@
                       range-x)]
           (recur splits' timelines' (inc y) (subvec rows 2)))))))
 
-;; [p1 p2 solution]
+(def part1-part2-vec (create-splits-and-timelines input-data))
 
-(create-splits-and-timelines input-data)
+(defn -main []
+  (apply println part1-part2-vec))
+
+(-main)
