@@ -38,9 +38,8 @@
                   (str/split input #"\n")
                   (map Integer/parseInt input)))
 
-;; p1 solution 
-(tick-up input-prep end-tick-increment)
+(defn -main []
+  (println (part1 (tick-up input-prep end-tick-increment)))
+  (println (part2 (tick-up input-prep any-tick-increment))))
 
-;; p2 solution 
-(tick-up input-prep any-tick-increment)
-
+(-main)
