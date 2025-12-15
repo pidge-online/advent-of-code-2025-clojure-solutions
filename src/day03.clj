@@ -22,8 +22,12 @@
                                      other-digit))))
               (* 11 (Integer/parseInt largest-joltage)))))
 
-;; p1 solution
-(as-> input-prep input
+(def part1 (as-> input-prep input
   (map two-battery-joltage input)
   (apply + input))
 
+(defn -main []
+  (println part1)
+  (println "part 2 TBD")
+
+(-main)
