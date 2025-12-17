@@ -44,8 +44,7 @@
                          (first)
                          (mapv #(str %))))
 
-(def largest-digit-length-each-sum (->> (take 4 input-data)
-                                        (transpose)
+(def largest-digit-length-each-sum (->> (extract-int-rows input-data)
                                         (mapv #(apply max (mapv (fn [s] (count s)) %)))))
 
 (def part1 (->> (extract-int-rows input-data)
