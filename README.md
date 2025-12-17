@@ -13,13 +13,13 @@ Puzzle inputs were stored in `resources/puzzle-inputs/`, adjust the code as requ
 | 03 | ✓ | ✓ | N/A | N/A |
 | 04 | ✓ | ✓ | N/A | N/A |
 | 05 | ✓ | ✓ | N/A | N/A |
-| 06 | ✓ | ✗ | N/A | TBD |
+| 06 | ✓ | ✓ | N/A | N/A |
 | 07 | ✓ | ✓ | N/A | N/A |
 | 08 | ✓ | ✓ | Algorithm known, needed help constructing it due to lack of experience | Algorithm known, needed help constructing it due to lack of experience |
 | 09 | ✓ | ✓ | N/A | N/A |
 | 10 | ✓ | ✗ | N/A | TBD |
 | 11 | ✓ | ✗ | N/A | TBD |
 | 12 | ✓ | ✗* | N/A | TBD | 
-| total | 12/12 | 8/12 | 1/12 | 1/8 | 
+| total | 12/12 | 8/12 | 1/12 | 1/9 | 
 
 (* yet to unlock)
