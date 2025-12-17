@@ -33,7 +33,7 @@
                                 (transpose)))
 
 (def raw-single-string-digit-vector (-> (slurp "resources/puzzle-inputs/day06.txt")
-                                        (str/split #"\n")))
+                                        (str/split-lines)))
 
 (def input-data (->> raw-single-string-digit-vector
                      (mapv #(str/split % #"\s+"))
